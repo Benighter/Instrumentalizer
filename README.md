@@ -1,111 +1,138 @@
-# Instrumentalizer
+# Instrumentalizer 🎵
 
-A web application that separates vocals from instrumentals in audio files using frequency filtering.
+A powerful web application that separates vocals from instrumentals in audio files. Built with React for the frontend and Flask for the backend, this application provides an intuitive interface for processing audio files and downloading the separated tracks.
+
+## Author
+
+**Bennet Nkolele**  
+GitHub: [@benighter](https://github.com/benighter)
 
 ## Features
 
-- Upload audio files in various formats (MP3, WAV, OGG, FLAC, AAC, M4A)
-- Separate vocals from instrumentals using frequency-based filtering
-- Progress tracking during processing
-- Download separated tracks individually
-- Clean, modern, and responsive UI
-- Works with large audio files
+- 🎵 Upload audio files in various formats (MP3, WAV)
+- 🎹 Separate vocals from instrumentals using advanced audio processing
+- 📊 Real-time progress tracking during processing
+- ⬇️ Download individual vocal and instrumental tracks
+- 💻 Modern, responsive user interface
+- 🚀 Support for large audio files
+- 🔄 Batch processing capabilities
 
 ## Project Structure
 
 ```
-Instrumentalizer/
-├── .gitignore
-├── package.json
-├── README.md
-└── instrumentalizer/
-    ├── backend/
-    │   ├── app.py
-    │   ├── requirements.txt
-    │   ├── uploads/
-    │   └── processed/
-    └── frontend/
-        ├── public/
-        ├── src/
-        └── package.json
+instrumentalizer/
+├── backend/
+│   ├── app.py              # Flask server and audio processing logic
+│   ├── requirements.txt    # Python dependencies
+│   ├── uploads/            # Temporary storage for uploaded files
+│   └── processed/          # Storage for processed audio files
+├── frontend/
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── App.js         # Main application component
+│   │   └── index.js       # Application entry point
+│   ├── public/            # Static assets
+│   └── package.json      # Frontend dependencies
+└── package.json          # Root level scripts and dependencies
 ```
 
-## Setup and Installation
+## Prerequisites
 
-### Prerequisites
+- Node.js (v14 or higher)
+- Python (v3.8 or higher)
+- npm or yarn package manager
+- Virtual environment for Python
 
-- Node.js (v14+)
-- Python (v3.8+)
-- npm or yarn
+## Quick Start
 
-### Quick Setup
-
-1. Clone the repository:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Benighter/Instrumentalizer.git
+   cd Instrumentalizer
    ```
-   git clone https://github.com/yourusername/instrumentalizer.git
-   cd instrumentalizer
-   ```
 
-2. Install the dependencies for the root project:
-   ```
+2. **Install Dependencies**
+   ```bash
+   # Install root level dependencies
    npm install
-   ```
 
-3. Install the frontend dependencies:
-   ```
+   # Install frontend dependencies
    npm run install:frontend
-   ```
 
-4. Set up the Python backend:
-   ```
+   # Set up Python virtual environment and install backend dependencies
    cd instrumentalizer/backend
    python -m venv venv
-   .\venv\Scripts\activate  # Windows
-   # OR
-   source venv/bin/activate # macOS/Linux
+   # On Windows
+   .\venv\Scripts\activate
+   # On Unix or MacOS
+   source venv/bin/activate
    pip install -r requirements.txt
+   cd ../..
    ```
 
-## Running the Application
+3. **Start the Application**
+   ```bash
+   # Start both frontend and backend servers
+   npm start
+   ```
 
-After completing the setup, you can run the application using:
+   The application will be available at:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
 
-```
-npm start
-```
+## How to Use
 
-This will start both the backend server at http://localhost:5000 and the frontend at http://localhost:3000.
-
-### Running Individual Components
-
-To run just the frontend:
-```
-npm run start:frontend
-```
-
-To run just the backend:
-```
-npm run start:backend
-```
-
-## Usage
-
-1. Open http://localhost:3000 in your web browser
-2. Upload an audio file by dragging and dropping or clicking the upload area
-3. Wait for the processing to complete (progress bar will indicate status)
-4. Download the separated vocal and instrumental tracks
+1. Open your browser and navigate to `http://localhost:3000`
+2. Click the "Upload" button to select an audio file
+3. Once uploaded, the application will automatically begin processing
+4. Track the progress in real-time through the progress bar
+5. When processing is complete, download buttons will appear for:
+   - Vocal track
+   - Instrumental track
+6. Click the respective buttons to download your separated audio files
 
 ## How It Works
 
-The application uses a frequency-based approach to separate vocals from instrumentals:
+Instrumentalizer uses frequency-based audio processing to separate vocals from instrumentals:
 
-1. Audio is loaded and converted to the frequency domain using STFT
-2. A frequency mask is applied to isolate frequencies typically associated with human voice
-3. The mask is applied to create the vocal track, and inverted to create the instrumental track
-4. Both tracks are saved and made available for download
+1. **Upload**: Files are securely uploaded to the backend server
+2. **Processing**: The audio is analyzed using advanced signal processing techniques
+3. **Separation**: Vocal and instrumental frequencies are identified and separated
+4. **Download**: Processed files are made available for download
 
-This is a simplified approach and may not provide perfect separation, but works reasonably well for many audio files.
+## API Endpoints
+
+- `POST /upload` - Upload audio file
+- `GET /status/<task_id>` - Check processing status
+- `GET /download/<file_id>` - Download processed files
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-MIT 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- React.js team for the amazing frontend framework
+- Flask team for the lightweight backend framework
+- All contributors and users of the application
+
+## Support
+
+If you encounter any issues or have questions, please:
+1. Check the [Issues](https://github.com/Benighter/Instrumentalizer/issues) page
+2. Create a new issue if your problem isn't already listed
+3. Provide as much detail as possible about your problem
+
+---
+
+Made with ❤️ by Bennet Nkolele 
