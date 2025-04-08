@@ -1,0 +1,17 @@
+{
+  "name": "instrumentalizer",
+  "version": "1.0.0",
+  "description": "Application to separate vocals from instrumentals",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend": "cd instrumentalizer/frontend && npm start",
+    "start:backend": "cd instrumentalizer/backend && .\\venv\\Scripts\\python app.py",
+    "install:frontend": "cd instrumentalizer/frontend && npm install",
+    "install:all": "npm install && npm run install:frontend"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
