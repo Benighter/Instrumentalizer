@@ -234,14 +234,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - React.js team for the amazing frontend framework
 - Flask team for the lightweight backend framework
 - All contributors and users of the application
-
-## Support
-
-If you encounter any issues or have questions, please:
-1. Check the [Issues](https://github.com/Benighter/Instrumentalizer/issues) page
-2. Create a new issue if your problem isn't already listed
-3. Provide as much detail as possible about your problem
-
----
-
+  
 Made with ❤️ by Bennet Nkolele 
