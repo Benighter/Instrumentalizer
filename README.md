@@ -42,43 +42,152 @@ instrumentalizer/
 - Python (v3.8 or higher)
 - npm or yarn package manager
 - Virtual environment for Python
+- FFmpeg (for audio processing)
 
-## Quick Start
+## Detailed Installation Guide
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Benighter/Instrumentalizer.git
-   cd Instrumentalizer
-   ```
+### 1. Clone the Repository
 
-2. **Install Dependencies**
-   ```bash
-   # Install root level dependencies
-   npm install
+```bash
+git clone https://github.com/Benighter/Instrumentalizer.git
+cd Instrumentalizer
+```
 
-   # Install frontend dependencies
-   npm run install:frontend
+### 2. Install FFmpeg
 
-   # Set up Python virtual environment and install backend dependencies
-   cd instrumentalizer/backend
-   python -m venv venv
-   # On Windows
-   .\venv\Scripts\activate
-   # On Unix or MacOS
-   source venv/bin/activate
-   pip install -r requirements.txt
-   cd ../..
-   ```
+FFmpeg is required for audio processing. Install it based on your operating system:
 
-3. **Start the Application**
-   ```bash
-   # Start both frontend and backend servers
-   npm start
-   ```
+**Windows:**
+- Download from [FFmpeg website](https://ffmpeg.org/download.html)
+- Add FFmpeg to your system PATH
 
-   The application will be available at:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
+**macOS:**
+```bash
+brew install ffmpeg
+```
+
+**Linux:**
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
+
+### 3. Set Up Backend
+
+```bash
+# Navigate to the backend directory
+cd instrumentalizer/backend
+
+# Create a Python virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# On Windows:
+.\venv\Scripts\activate
+# On Unix or MacOS:
+source venv/bin/activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Create necessary directories if they don't exist
+mkdir uploads processed
+```
+
+### 4. Set Up Frontend
+
+```bash
+# Navigate to the frontend directory
+cd ../frontend
+
+# Install frontend dependencies
+npm install
+
+# Install additional required packages
+npm install axios bootstrap @mui/material @mui/icons-material @emotion/react @emotion/styled
+```
+
+### 5. Set Up Root Level Dependencies
+
+```bash
+# Navigate back to the root directory
+cd ../..
+
+# Install root level dependencies
+npm install
+
+# Install concurrently for running both servers
+npm install concurrently --save-dev
+```
+
+## Starting the Application
+
+### Option 1: Start Both Servers Together
+
+From the root directory:
+
+```bash
+npm start
+```
+
+This will start both the frontend and backend servers concurrently.
+
+### Option 2: Start Servers Separately
+
+**Start the Backend Server:**
+```bash
+# Navigate to the backend directory
+cd instrumentalizer/backend
+
+# Activate the virtual environment if not already activated
+# On Windows:
+.\venv\Scripts\activate
+# On Unix or MacOS:
+source venv/bin/activate
+
+# Start the Flask server
+python app.py
+```
+
+The backend server will run at http://localhost:5000
+
+**Start the Frontend Server:**
+```bash
+# Open a new terminal
+# Navigate to the frontend directory
+cd instrumentalizer/frontend
+
+# Start the React development server
+npm start
+```
+
+The frontend will run at http://localhost:3000
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+1. **"No such file or directory" error when running app.py**
+   - Make sure you're in the correct directory: `instrumentalizer/backend`
+   - Ensure the virtual environment is activated
+
+2. **"Missing script: start" error**
+   - Make sure you're in the correct directory
+   - Check that package.json exists and contains the start script
+   - Run `npm install` to install dependencies
+
+3. **Python package installation errors**
+   - Try updating pip: `python -m pip install --upgrade pip`
+   - For Windows users, some packages may require Visual C++ build tools
+   - Try installing packages one by one to identify problematic dependencies
+
+4. **Audio processing errors**
+   - Ensure FFmpeg is installed and in your system PATH
+   - Check that the uploads and processed directories exist and have write permissions
+
+5. **CORS errors when connecting frontend to backend**
+   - Verify that the backend is running on http://localhost:5000
+   - Check that CORS is properly configured in the Flask app
 
 ## How to Use
 
